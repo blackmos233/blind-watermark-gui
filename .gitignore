@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+
+#这是项目测试时会产生的一些临时文件，请忽略它们
+web_tool/
