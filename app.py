@@ -7,11 +7,6 @@ from flask import Flask, request, render_template, send_from_directory, jsonify
 from blind_watermark import WaterMark
 from werkzeug.utils import secure_filename
 
-# --- 生产环境配置 ---
-# 使用环境变量进行配置，以避免硬编码。
-# 在您的终端中（运行应用前）:
-# Windows: set FLASK_DEBUG=false
-# Linux/macOS: export FLASK_DEBUG=false
 
 # 通用配置
 FLASK_DEBUG = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
@@ -159,18 +154,17 @@ def extract_watermark():
 
 @app.route('/processed/<filename>')
 def get_processed_image(filename):
-    """提供处理后（带水印）的图片。"""
+    """提供处理后的图片。"""
     return send_from_directory(app.config['PROCESSED_FOLDER'], filename)
 
 # --- 主程序入口 ---
 if __name__ == '__main__':
-    # 如果启用，则启动缓存清理线程
+    # 启动缓存清理线程
     if CACHE_CLEANUP_ENABLED:
         cleanup_thread = threading.Thread(target=cleanup_task, daemon=True)
         cleanup_thread.start()
         print("缓存清理线程已启动。")
 
-    # 使用 Waitress 作为生产环境服务器
     from waitress import serve
     print("正在使用 Waitress 启动生产环境服务器...")
     serve(app, host='0.0.0.0', port=5000)
