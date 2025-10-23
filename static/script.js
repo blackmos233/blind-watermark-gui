@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Embed button logic
     embedButton.addEventListener('click', async () => {
         hideMessages();
-        showLoading('Embedding watermark, please wait...');
+        showLoading('正在嵌入水印，请稍候...');
 
         const file = embedFileInput.files[0];
         const watermarkText = watermarkTextInput.value;
 
         if (!file || !watermarkText) {
-            showError('Please provide both an image and watermark text.');
+            showError('请同时提供图片和水印文本。');
             hideLoading();
             return;
         }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 // Display success message with the exact watermark length
                 const successMessage = document.getElementById('embed-success-message');
-                successMessage.innerHTML = `Success! To extract the watermark, use this length: <strong>${data.wm_length}</strong>`;
+                successMessage.innerHTML = `成功！要解析此水印，请使用以下长度：<strong>${data.wm_length}</strong>`;
                 
                 // Auto-fill the length in the extract tab for convenience
                 wmLengthInput.value = data.wm_length;
@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadLink.download = data.processed_image_url.split('/').pop();
                 embedResultDiv.classList.remove('hidden');
             } else {
-                showError(data.error || 'An unknown error occurred.');
+                showError(data.error || '发生未知错误。');
             }
         } catch (error) {
-            showError('An error occurred while communicating with the server.');
+            showError('与服务器通信时发生错误。');
         } finally {
             hideLoading();
         }
@@ -90,13 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Extract button logic
     extractButton.addEventListener('click', async () => {
         hideMessages();
-        showLoading('Extracting watermark, please wait...');
+        showLoading('正在解析水印，请稍候...');
 
         const file = extractFileInput.files[0];
         const wmLength = wmLengthInput.value;
 
         if (!file || !wmLength) {
-            showError('Please provide both an image and the watermark length.');
+            showError('请同时提供图片和水印长度。');
             hideLoading();
             return;
         }
@@ -116,10 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 extractedTextDiv.textContent = data.extracted_text;
                 extractResultDiv.classList.remove('hidden');
             } else {
-                showError(data.error || 'An unknown error occurred.');
+                showError(data.error || '发生未知错误。');
             }
         } catch (error) {
-            showError('An error occurred while communicating with the server.');
+            showError('与服务器通信时发生错误。');
         } finally {
             hideLoading();
         }
