@@ -51,3 +51,13 @@ python app.py
 本项目遵循 [MIT License](LICENSE)。
 在使用时请保留原项目版权声明。
 
+---
+
+### 💬 一些话
+
+这是我的第一个公开仓库，GitHub 使用的还不太熟练。  
+如果这过程中有做得不对的地方、冒犯到你，我真心道歉。  
+若项目侵犯了你的权益，请通过邮箱联系我：  
+📧 [blackmos2331@gmail.com](mailto:blackmos2331@gmail.com)  
+我会在第一时间处理或删除相关内容。
+
