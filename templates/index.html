@@ -1,72 +1,72 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blind Watermark Tool</title>
+    <title>隐水印工具</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="container">
         <div class="tabs">
-            <button class="tab-link active" onclick="openTab(event, 'embed')">Embed Watermark</button>
-            <button class="tab-link" onclick="openTab(event, 'extract')">Extract Watermark</button>
+            <button class="tab-link active" onclick="openTab(event, 'embed')">添加隐水印</button>
+            <button class="tab-link" onclick="openTab(event, 'extract')">查询隐水印</button>
         </div>
 
         <!-- Embed Tab -->
         <div id="embed" class="tab-content" style="display:block;">
-            <h1>Embed a secret message into your image.</h1>
+            <h1>在你的图像里添加隐藏信息</h1>
             
             <div class="form-group">
-                <label for="embed_watermark_text">Watermark Text:</label>
+                <label for="embed_watermark_text">水印文字:</label>
                 <input type="text" id="embed_watermark_text" placeholder="Enter your secret message...">
             </div>
 
             <div class="form-group">
-                <label for="embed_file">Upload Image:</label>
+                <label for="embed_file">上传图像:</label>
                 <input type="file" id="embed_file" accept="image/*">
             </div>
 
-            <button id="embed-button">Generate Watermarked Image</button>
+            <button id="embed-button">生成含有隐水印的图像</button>
 
             <div id="embed-result" class="hidden">
-                <h2>Processing Complete</h2>
+                <h2>处理完成</h2>
                 <p id="embed-success-message" class="success-message"></p>
                 <img id="processed-image" src="" alt="Watermarked Image">
                 <a id="download-link" href="" download>
-                    <button>Download Image</button>
+                    <button>下载图像</button>
                 </a>
             </div>
         </div>
 
         <!-- Extract Tab -->
         <div id="extract" class="tab-content">
-            <h1>Extract a secret message from your image.</h1>
+            <h1>在你的图像里提取隐藏信息</h1>
             
             <div class="form-group">
-                <label for="extract_file">Upload Watermarked Image:</label>
+                <label for="extract_file">上传含有隐水印的图像:</label>
                 <input type="file" id="extract_file" accept="image/*">
             </div>
 
             <div class="form-group">
-                <label for="extract_wm_length">Watermark Length (bits):</label>
+                <label for="extract_wm_length">水印长度 (bits):</label>
                 <input type="number" id="extract_wm_length" placeholder="Enter the expected length of the watermark...">
-                <small>This is required by the algorithm to extract the message.</small>
+                <small>这是算法提取信息必须的参数</small>
             </div>
 
-            <button id="extract-button">Extract Watermark Text</button>
+            <button id="extract-button">提取隐水印</button>
 
             <div id="extract-result" class="hidden">
-                <h2>Extraction Complete</h2>
-                <p>Extracted Message:</p>
+                <h2>提取完成</h2>
+                <p>提取出的信息:</p>
                 <div class="result-text" id="extracted-text"></div>
             </div>
         </div>
 
         <div id="loading" class="hidden">
             <div class="spinner"></div>
-            <p id="loading-text">Processing, please wait...</p>
+            <p id="loading-text">正在处理，请稍候...</p>
         </div>
 
         <div id="error-message" class="hidden"></div>
@@ -76,7 +76,7 @@
 </body>
 
 <footer>
-    <p>The core <a href="https://github.com/guofei9987/blind_watermark" target="_blank">blind-watermark</a> library was created by Guo Fei (MIT License). This web tool was developed based on it. | <a href="https://beian.miit.gov.cn/" target="_blank">在此处替换你的备案号</a></p>
+    <p>The core <a href="https://github.com/guofei9987/blind_watermark" target="_blank">blind-watermark</a> library was created by @guofei9987 (MIT License).本web工具基于此库开发完成 | <a href="https://blackmos233.top/" target="_blank">web由blackmos233完成编写</a></p>
 </footer>
 
 </html>
